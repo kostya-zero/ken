@@ -9,7 +9,7 @@ mod cli;
 fn main() {
     let cli = Cli::parse();
 
-    if cli.pattern.is_none() || cli.pattern.clone().unwrap().is_empty() {
+    if cli.pattern.is_none() {
         println!("Nothing to search.");
         exit(1);
     }
