@@ -11,4 +11,12 @@ use clap::Parser;
 )]
 pub struct Cli {
     pub pattern: Option<String>,
+
+    #[arg(
+        short = 'c',
+        long,
+        help = "Set the highlight color (red, green, blue, yellow, dimmed). Default is red.",
+        default_value = "red"
+    )]
+    pub hightlight_color: String,
 }

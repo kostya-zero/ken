@@ -2,9 +2,10 @@ use std::{io::Read, process::exit};
 
 use clap::Parser;
 
-use crate::cli::Cli;
+use crate::{cli::Cli, terminal::highlight};
 
 mod cli;
+mod terminal;
 
 fn main() {
     let cli = Cli::parse();
@@ -23,10 +24,12 @@ fn main() {
     }
 
     let lines = content.lines();
+    let hightlight_color = cli.hightlight_color.as_str();
     for (id, line) in lines.enumerate() {
         if line.contains(&text) {
-            let modified = line.replace(&text, &format!("\x1b[91m\x1b[1m{text}\x1b[0m"));
-            println!(" {}:  {modified}", id + 1);
+            let modified = highlight(&text, hightlight_color.into());
+            let modified_display = line.replace(&text, modified.as_str());
+            println!(" {}:  {modified_display}", id + 1);
         }
     }
 }
