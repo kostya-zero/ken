@@ -19,6 +19,9 @@ It provides a simple and efficient way to search through files and directories, 
   - [ ] Search in files when no input from `stdin`
   - [ ] Regex support
 - [ ] Customization
-  - [ ] Color selection
+  - [x] Color selection
   - [ ] Line numbers
   - [ ] Display performance metrics
+- [ ] Output
+  - [x] Plain text
+  - [ ] Convert to JSON
