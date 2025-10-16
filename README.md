@@ -13,12 +13,12 @@ It provides a simple and efficient way to search through files and directories, 
 
 ## Roadmap
 
-- [x] - Read from `stdin`
-- [ ] - Search 
-  - [x] - Basic text
-  - [ ] - Search in files where no input from `stdin`
-  - [ ] - Regex support
-- [ ] - Customization
-  - [ ] - Color selection
-  - [ ] - Line numbers
-  - [ ] - Display performance metrics
+- [x] Read from `stdin`
+- [ ] Search 
+  - [x] Basic text
+  - [ ] Search in files when no input from `stdin`
+  - [ ] Regex support
+- [ ] Customization
+  - [ ] Color selection
+  - [ ] Line numbers
+  - [ ] Display performance metrics
