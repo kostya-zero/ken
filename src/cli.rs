@@ -12,6 +12,9 @@ use clap::Parser;
 pub struct Cli {
     pub pattern: Option<String>,
 
+    #[arg(short = 'l', long, help = "Show line number")]
+    pub show_line_numbers: bool,
+
     #[arg(
         short = 'c',
         long,

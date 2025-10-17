@@ -16,6 +16,7 @@ fn main() {
     }
 
     let text = cli.pattern.unwrap();
+    let show_line_number = cli.show_line_numbers;
     let mut content = String::new();
     std::io::stdin().read_to_string(&mut content).unwrap();
 
@@ -29,7 +30,14 @@ fn main() {
         if line.contains(&text) {
             let modified = highlight(&text, hightlight_color.into());
             let modified_display = line.replace(&text, modified.as_str());
-            println!(" {}:  {modified_display}", id + 1);
+            println!(
+                "{}{modified_display}",
+                if show_line_number {
+                    format!(" {}: ", id + 1)
+                } else {
+                    String::new()
+                }
+            );
         }
     }
 }
