@@ -18,8 +18,11 @@ pub struct Cli {
     #[arg(
         short = 'c',
         long,
-        help = "Set the highlight color (red, green, blue, yellow, dimmed). Default is red.",
+        help = "Set the highlight color (red, green, blue, yellow, dimmed, none). Default is red.",
         default_value = "red"
     )]
     pub hightlight_color: String,
+
+    #[arg(short, long, help = "Show performance metrics")]
+    pub metrics: bool,
 }
