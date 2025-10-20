@@ -28,8 +28,8 @@ fn main() {
     let hightlight_color = cli.hightlight_color.as_str();
     for (id, line) in lines.enumerate() {
         if line.contains(&text) {
-            let modified = highlight(&text, hightlight_color.into());
-            let modified_display = line.replace(&text, modified.as_str());
+            let modified_display =
+                line.replace(&text, highlight(&text, hightlight_color.into()).as_str());
             println!(
                 "{}{modified_display}",
                 if show_line_number {

@@ -16,11 +16,10 @@ It provides a simple and efficient way to search through files and directories, 
 - [x] Read from `stdin`
 - [ ] Search 
   - [x] Basic text
-  - [ ] Search in files when no input from `stdin`
-  - [ ] Regex support
+  - [ ] Regex support (?)
 - [ ] Customization
   - [x] Color selection
-  - [ ] Line numbers
+  - [x] Line numbers
   - [ ] Display performance metrics
 - [ ] Output
   - [x] Plain text
