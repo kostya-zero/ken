@@ -14,13 +14,14 @@ It provides a simple and efficient way to search through files and directories, 
 ## Roadmap
 
 - [x] Read from `stdin`
-- [ ] Search 
+- [ ] Read from file (if path is provided)
+- [ ] Search
   - [x] Basic text
   - [ ] Regex support (?)
 - [x] Customization
   - [x] Color selection
   - [x] Line numbers
   - [x] Display performance metrics
-- [ ] Output
+- [x] Output
   - [x] Plain text
-  - [ ] Convert to JSON
+  - [x] Convert to JSON
