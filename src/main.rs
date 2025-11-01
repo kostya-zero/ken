@@ -3,7 +3,10 @@ use std::{io::Read, process::exit, time::Instant};
 use clap::Parser;
 use serde::Serialize;
 
-use crate::{cli::Cli, terminal::highlight};
+use crate::{
+    cli::Cli,
+    terminal::{HighlightColor, highlight, highlight_to_code},
+};
 
 mod cli;
 mod terminal;
@@ -33,28 +36,38 @@ fn main() {
 
 fn print_terminal(cli: &Cli, lines: &[String]) {
     let pattern = cli.pattern.as_ref().unwrap();
-    let hightlight_color = cli.hightlight_color.as_str();
-    let pattern_lenght = pattern.len();
+    let hightlight_color: HighlightColor = cli.hightlight_color.as_str().into();
+    let hightlight = highlight_to_code(&hightlight_color);
+    let reset = "\x1b[0m";
 
     let start_timestamp = Instant::now();
+
     for (id, line) in lines.iter().enumerate() {
-        for (index, _) in line.match_indices(pattern) {
-            let end_index = index + pattern_lenght;
-            let mut line_modified = line.clone();
-            line_modified.insert_str(index, hightlight_color.into());
-            line_modified.insert_str(end_index, "\x1b[0m");
-            println!(
-                "{}{line_modified}",
-                if cli.show_line_numbers {
-                    format!(" {}: ", id + 1)
-                } else {
-                    String::new()
-                }
-            );
+        let mut last = 0;
+        let mut out = String::with_capacity(line.len() + 32);
+
+        for (idx, _) in line.match_indices(pattern) {
+            let end = idx + pattern.len();
+            out.push_str(&line[last..idx]);
+            out.push_str(&hightlight);
+            out.push_str(&line[idx..end]);
+            out.push_str(reset);
+            last = end;
         }
+        out.push_str(&line[last..]);
+
+        println!(
+            "{}{out}",
+            if cli.show_line_numbers {
+                format!(" {}: ", id + 1)
+            } else {
+                String::new()
+            }
+        );
     }
-    let elapsed = start_timestamp.elapsed().as_millis();
+
     if cli.metrics {
+        let elapsed = start_timestamp.elapsed().as_millis();
         println!("Done in {} ms", elapsed);
     }
 }
