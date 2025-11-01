@@ -5,7 +5,7 @@ use serde::Serialize;
 
 use crate::{
     cli::Cli,
-    terminal::{HighlightColor, highlight, highlight_to_code},
+    terminal::{HighlightColor, highlight_to_code},
 };
 
 mod cli;

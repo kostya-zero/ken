@@ -32,19 +32,3 @@ pub fn highlight_to_code(color: &HighlightColor) -> &'static str {
         HighlightColor::None => "",
     }
 }
-
-pub fn highlight(text: &str, color: HighlightColor) -> String {
-    if color == HighlightColor::None {
-        return text.to_string();
-    }
-    let color_code = match color {
-        HighlightColor::Red => "\x1b[31m",
-        HighlightColor::Green => "\x1b[32m",
-        HighlightColor::Blue => "\x1b[34m",
-        HighlightColor::Yellow => "\x1b[33m",
-        HighlightColor::Dimmed => "\x1b[2m",
-        HighlightColor::None => "",
-    };
-    let reset_code = "\x1b[0m";
-    format!("{}{}{}", color_code, text, reset_code)
-}
