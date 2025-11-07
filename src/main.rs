@@ -27,6 +27,11 @@ fn main() {
     }
 
     let lines: Vec<String> = content.lines().map(|l| l.to_string()).collect();
+    // let lines: Vec<String> = content
+    //     .split(['\n', '\r'])
+    //     .filter(|l| !l.is_empty())
+    //     .map(|e| e.to_string())
+    //     .collect();
     if cli.json {
         print_json(&cli, &lines);
     } else {
@@ -43,6 +48,9 @@ fn print_terminal(cli: &Cli, lines: &[String]) {
     let start_timestamp = Instant::now();
 
     for (id, line) in lines.iter().enumerate() {
+        if !line.contains(pattern) {
+            continue;
+        }
         let mut last = 0;
         let mut out = String::with_capacity(line.len() + 32);
 

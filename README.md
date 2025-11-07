@@ -11,17 +11,3 @@ It provides a simple and efficient way to search through files and directories, 
 - Fast as possible search performance.
 - Enhanced user experience with modern terminal capabilities.
 
-## Roadmap
-
-- [x] Read from `stdin`
-- [ ] Read from file (if path is provided)
-- [ ] Search
-  - [x] Basic text
-  - [ ] Regex support (?)
-- [x] Customization
-  - [x] Color selection
-  - [x] Line numbers
-  - [x] Display performance metrics
-- [x] Output
-  - [x] Plain text
-  - [x] Convert to JSON
