@@ -1,9 +1,13 @@
 [package]
-name = "ken"
+name = "seek-finder"
 description = "No-nonsense grep-like tool"
 readme = "README.md"
 version = "0.1.0"
 edition = "2024"
+
+[[bin]]
+path = "src/main.rs"
+name = "seek"
 
 [dependencies]
 clap = { version = "4.5.49", features = ["derive"] }
