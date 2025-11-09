@@ -11,3 +11,22 @@ It provides a simple and efficient way to search through files and directories, 
 - Fast as possible search performance.
 - Enhanced user experience with modern terminal capabilities.
 
+## Installation
+
+The recommended way to install Seek is to use `cargo`.
+
+```shell 
+cargo install seek-finder
+
+# And you can start using it!
+
+echo "Hello world!" | seek Hello
+```
+
+## Usage
+
+You can use `seek` as you use `grep`. It accepts piped input and then performs search by given pattern:
+
+```shell
+cat Cargo.lock | seek clap
+```
