@@ -93,7 +93,7 @@ fn print_json(cli: &Cli, lines: &[String]) {
         }
         for (index, _) in line.match_indices(pattern) {
             let result = SearchResult {
-                line_number: idx,
+                line_number: idx + 1,
                 first_character: index,
                 last_character: pattern.len() + index,
             };
